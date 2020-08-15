@@ -1,7 +1,8 @@
-import 'package:action_mixin/events/event_base.dart';
+import 'package:action_mixin/src/events/event_base.dart';
 
 import 'action_entry.dart';
 
+/// This class provides a Map to store callback functions with EventBase as key.
 mixin ActionMixin {
   Map<String, Function(EventBase)> _actions;
   bool _firstInit = true;
@@ -35,6 +36,10 @@ mixin ActionMixin {
     }
   }
 
+  /// The callback function is called from the provider,
+  /// it requires passing an EventBase,
+  /// you can create yourself a class that extends
+  /// EventBase with arbitrary data.
   void callback(EventBase event) {
     if (_actions[event.getKey()] == null) {
       throw UnimplementedError('Unimplemented $event');
