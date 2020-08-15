@@ -1,8 +1,9 @@
 name: action_mixin
-description: A new Flutter project.
-version: 0.0.1
+description: Makes it simple to pass events from logic code to UI code.
+version: 0.1.0
 author:
-homepage:
+  - tbm98 <tbm98.dev@gmail.com>
+homepage: https://github.com/tbm98/action_mixin
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
