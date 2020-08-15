@@ -46,8 +46,8 @@ Store the FunctionCallback in a Map and initialize it from the UI code. Then you
        callback(LoadingEvent());
        Future.delayed(Duration(seconds: 1));
        state++;
-       // use callback
-       callback(ShowSnackbarEvent());
+       // use callback with data
+       callback(ShowSnackbarEvent(content: "some content to show", success: false));
      }
    ```
 See more in the example for better understanding.
