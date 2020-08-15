@@ -4,10 +4,28 @@ import 'action_entry.dart';
 
 mixin ActionMixin {
   Map<String, Function(EventBase)> _actions;
+  bool _firstInit = true;
 
-  /// Put listAction into _action map
-  /// this will ignore if _action map is exists that key
+  /// Initialize the callback list once, it will ignore init times after that.
   void initActions(List<ActionEntry> listAction) {
+    if (_firstInit == false) {
+      return;
+    }
+    _actions ??= {};
+
+    for (final action in listAction) {
+      if (_actions[action.event.getKey()] == null) {
+        _actions[action.event.getKey()] = action.action;
+      }
+    }
+
+    _firstInit = false;
+  }
+
+  /// Add a list of callbacks after init
+  ///
+  /// If it is the default actions then you should use initActions.
+  void addActions(List<ActionEntry> listAction) {
     _actions ??= {};
 
     for (final action in listAction) {

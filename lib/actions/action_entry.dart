@@ -1,6 +1,6 @@
 import 'package:action_mixin/events/event_base.dart';
 
-/// It map one event with one action
+/// It carries an event and a corresponding CallbackFunction.
 class ActionEntry {
   const ActionEntry({this.event, this.action});
 
