@@ -1,9 +1,10 @@
 name: action_mixin
 description: Makes it simple to pass events from logic code to UI code.
 version: 0.1.0
-author:
-  - tbm98 <tbm98.dev@gmail.com>
+author: tbm98 <tbm98.dev@gmail.com>
 homepage: https://github.com/tbm98/action_mixin
+repository: https://github.com/tbm98/action_mixin
+issue_tracker: https://github.com/tbm98/action_mixin/issues
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
