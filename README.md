@@ -1,20 +1,21 @@
-# action_mixin [other solution use stream](https://github.com/tbm98/event_mixin)
+# action_mixin 
+
 Makes it simple to pass events from logic code to UI code.
 
 ## Why use this package ?
 If you used Provider or Riverpod or something similar, how do you display a dialog or show a snackbar from providers?
-#### There are a few ways I usually come across the following:
+### There are a few ways I usually come across the following:
 * Use stream to send events and listen in the UI code
     * Listening to a stream in StatefulWidget is easy in the initState() function. But sometimes you forget to close the stream and the problem occurs.
 * Use ProviderListener in Riverpod
     * `Even if a provider changes many times in a quick succession, onChange will be called only once, at the end of the frame.` You cannot post multiple events at the same time.
 * What about Callback? Yes I use it but how to use it?
     * Using the callback seems pretty wordy and I'm a lazy person :P
-#### What is the solution?
+### What is the solution?
 Store the FunctionCallback in a Map and initialize it from the UI code. Then you can get it to use according to the predefined key.
-#### Usage
+### Usage
 1) Create a ChangeNotifier or StateNotifier or something like that and they use `with ActionMixin`.
-2) Init in the initState() or build() if in StatelessWidget.
+2) Init in the initState() if StatefulWidget or build() if StatelessWidget.
     ```dart
     @override
       Widget build(BuildContext context) {
@@ -50,4 +51,9 @@ Store the FunctionCallback in a Map and initialize it from the UI code. Then you
        callback(ShowSnackbarEvent(content: "some content to show", success: false));
      }
    ```
+### Note
+If you need to show a snackbar or bottom sheet, use it with StatefulWidget.
+
 See more in the example for better understanding.
+
+[Other solution use stream](https://github.com/tbm98/event_mixin)
