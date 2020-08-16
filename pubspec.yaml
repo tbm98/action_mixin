@@ -1,6 +1,6 @@
 name: action_mixin
 description: Makes it simple to pass events from logic code to UI code use function callback.
-version: 0.1.1
+version: 0.1.1+1
 author: tbm98 <tbm98.dev@gmail.com>
 homepage: https://github.com/tbm98/action_mixin
 repository: https://github.com/tbm98/action_mixin

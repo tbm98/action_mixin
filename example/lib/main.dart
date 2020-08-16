@@ -85,7 +85,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ActionEntry(
           event: const LoadingEvent(),
           action: (event) {
-            print('loading $event');
             showDialog(
                 context: context,
                 builder: (ct) {
@@ -103,7 +102,6 @@ class _MyHomePageState extends State<MyHomePage> {
           event: ShowSnackbarEvent(),
           action: (event) {
             final ShowSnackbarEvent showSnackbar = event;
-            print('show snackbar $showSnackbar');
             _scaffoldKey.currentState.showSnackBar(SnackBar(
               content: Text('content'),
             ));
