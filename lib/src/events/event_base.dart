@@ -3,11 +3,10 @@
 /// This class acts as a key in the Map function callback,
 /// and it also acts as a carryover of the data logic code.
 abstract class EventBase {
-  /// return a unique String as key in map _action
-  String getKey();
+  const EventBase();
 
   @override
   String toString() {
-    return getKey();
+    return runtimeType.toString();
   }
 }

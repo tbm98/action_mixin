@@ -5,9 +5,4 @@ class ShowSnackbarEvent extends EventBase {
 
   final String content;
   final bool success;
-
-  @override
-  String getKey() {
-    return 'show-snackbar';
-  }
 }

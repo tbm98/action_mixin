@@ -15,8 +15,8 @@ mixin ActionMixin {
     _actions ??= {};
 
     for (final action in listAction) {
-      if (_actions[action.event.getKey()] == null) {
-        _actions[action.event.getKey()] = action.action;
+      if (_actions[action.event.toString()] == null) {
+        _actions[action.event.toString()] = action.action;
       }
     }
 
@@ -30,8 +30,8 @@ mixin ActionMixin {
     _actions ??= {};
 
     for (final action in listAction) {
-      if (_actions[action.event.getKey()] == null) {
-        _actions[action.event.getKey()] = action.action;
+      if (_actions[action.event.toString()] == null) {
+        _actions[action.event.toString()] = action.action;
       }
     }
   }
@@ -41,9 +41,9 @@ mixin ActionMixin {
   /// you can create yourself a class that extends
   /// EventBase with arbitrary data.
   void callback(EventBase event) {
-    if (_actions[event.getKey()] == null) {
+    if (_actions[event.toString()] == null) {
       throw UnimplementedError('Unimplemented $event');
     }
-    _actions[event.getKey()].call(event);
+    _actions[event.toString()].call(event);
   }
 }

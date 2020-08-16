@@ -1,4 +1,5 @@
 import 'package:action_mixin/action_mixin.dart';
+import 'package:example/events/dismis_dialog_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -13,7 +14,8 @@ class ST extends StateNotifier<int> with ActionMixin {
   void increA() async {
     state++;
     callback(LoadingEvent());
-    Future.delayed(Duration(seconds: 1));
+    await Future.delayed(Duration(seconds: 1));
+    callback(DismisDialogEvent());
     state++;
     callback(ShowSnackbarEvent());
   }
@@ -81,9 +83,21 @@ class _MyHomePageState extends State<MyHomePage> {
   List<ActionEntry> actions() {
     return [
       ActionEntry(
-          event: LoadingEvent(),
+          event: const LoadingEvent(),
           action: (event) {
             print('loading $event');
+            showDialog(
+                context: context,
+                builder: (ct) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                });
+          }),
+      ActionEntry(
+          event: DismisDialogEvent(),
+          action: (_) {
+            Navigator.of(context, rootNavigator: true).pop();
           }),
       ActionEntry(
           event: ShowSnackbarEvent(),
