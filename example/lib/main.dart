@@ -36,28 +36,31 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulHookWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  void initState() {
+    super.initState();
+    context.read(stProvider).initActions(actions());
+  }
+
   @override
   Widget build(BuildContext context) {
-    // init actions
-    useProvider(stProvider).initActions(actions());
-
     return Scaffold(
+        key: _scaffoldKey,
         appBar: AppBar(
-          title: Text(widget.title),
+          title: Text('null'),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -66,6 +69,9 @@ class _MyHomePageState extends State<MyHomePage> {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             context.read(stProvider).increA();
+//            _scaffoldKey.currentState.showSnackBar(SnackBar(
+//              content: Text('content'),
+//            ));
           },
           tooltip: 'Increment',
           child: Icon(Icons.add),
@@ -84,6 +90,9 @@ class _MyHomePageState extends State<MyHomePage> {
           action: (event) {
             final ShowSnackbarEvent showSnackbar = event;
             print('show snackbar $showSnackbar');
+            _scaffoldKey.currentState.showSnackBar(SnackBar(
+              content: Text('content'),
+            ));
           })
     ];
   }
