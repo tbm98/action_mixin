@@ -1,11 +1,11 @@
-# ~~action_mixin~~ [new solution](https://github.com/tbm98/event_mixin)
+# action_mixin [other solution use stream](https://github.com/tbm98/event_mixin)
 Makes it simple to pass events from logic code to UI code.
 
 ## Why use this package ?
 If you used Provider or Riverpod or something similar, how do you display a dialog or show a snackbar from providers?
 #### There are a few ways I usually come across the following:
 * Use stream to send events and listen in the UI code
-    * Listening to a stream in StatefulWidget is easy in the initState() function. But what about StatelessWidget?
+    * Listening to a stream in StatefulWidget is easy in the initState() function. But sometimes you forget to close the stream and the problem occurs.
 * Use ProviderListener in Riverpod
     * `Even if a provider changes many times in a quick succession, onChange will be called only once, at the end of the frame.` You cannot post multiple events at the same time.
 * What about Callback? Yes I use it but how to use it?
