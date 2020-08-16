@@ -1,4 +1,4 @@
-# action_mixin
+# ~~action_mixin~~ [new solution](https://github.com/tbm98/event_mixin)
 Makes it simple to pass events from logic code to UI code.
 
 ## Why use this package ?
